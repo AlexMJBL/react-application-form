@@ -3,86 +3,41 @@ import EducationalExperienceList from "../components/educational-experience-list
 import PracticalExperienceList from "../components/practical-experience-list";
 import { useState } from "react";
 
-export default function ApplicationForm() {
-
-    const [formData, setFormData] = useState({
-        name:"",
-        email:"",
-        phone:"",
-        educationalExperience: [
+type Props = {
+    formData:{
+        name:string,
+        email:string,
+        phone:string,
+        educationalExperience: 
             {
-                school: "",
-                degree: "",
-                fieldOfStudy: "",
-                graduationYear: ""
-            }
-        ],
-        practicalExperience: [
+                school: string,
+                degree: string,
+                fieldOfStudy: string,
+                graduationYear: string
+            }[],
+        practicalExperience: 
             {
-                company: "",
-                position: "",
-                startDate: "",
-                endDate: ""
-            }
-        ]
-    });
-
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
-
-    const addEducation = () => {
-        setFormData(prev => ({
-            ...prev,
-            educationalExperience: [
-            ...prev.educationalExperience,
-            {
-                school: "",
-                degree: "",
-                fieldOfStudy: "",
-                graduationYear: ""
-            }
-            ]
-        }));
-    };
-
-    const updateEducation = (index: number,field: string,value: string) => {
-        setFormData(prev => ({
-            ...prev,
-            educationalExperience: prev.educationalExperience.map((edu, i) =>
-            i === index ? { ...edu, [field]: value } : edu
-            )
-        }));
-    };
-
-    
-     
-
-    const addPracticalExperience = () => {
-        setFormData(prev => ({
-            ...prev,
-            practicalExperience: [
-            ...prev.practicalExperience,
-            {
-                company: "",
-                position: "",
-                startDate: "",
-                endDate: ""
-            }
-            ]
-        }));
-    };
+                company: string,
+                position: string,
+                description: string,
+                startDate: string,
+                endDate: string
+            }[]
+        
+    },
+    addEducation: () => void;
+    addPracticalExperience: () => void;
+    onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 
 
+};
+
+export default function ApplicationForm({ formData, addEducation, addPracticalExperience, onInputChange }: Props) {
 
     return (
     <>
         <h1>Application Form</h1>
-        <GeneralInfo name={formData.name} email={formData.email} phone={formData.phone} onChange={handleInputChange} />
+        <GeneralInfo name={formData.name} email={formData.email} phone={formData.phone} onChange={onInputChange} />
         <EducationalExperienceList educationalExperience={formData.educationalExperience} onAdd={addEducation}/>
         <PracticalExperienceList practicalExperience={formData.practicalExperience} onAdd={addPracticalExperience}/>
         <button>Submit</button>

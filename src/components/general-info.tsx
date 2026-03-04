@@ -1,7 +1,11 @@
 import ButtonSection from "./button-section";
-
-export default function GeneralInfo({ name, email, phone, onChange }
-    : { name: string; email: string; phone: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void }) {
+type Props = {
+    name: string;
+    email: string;
+    phone: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+export default function GeneralInfo({ name, email, phone, onChange }: Props) {
     return (
     <>
         <h2>General Information</h2>

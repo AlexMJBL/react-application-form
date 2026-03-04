@@ -1,16 +1,14 @@
-import ButtonSection from "./button-section";
 import EducationalExperienceCard from "./educational-experience-card";
 
 type Props = {
-  educationalExperience: [
+  educationalExperience: 
     {
         school: string;
         degree: string;
         fieldOfStudy: string;
         graduationYear: string; 
-    }
-  ];
-  onAdd: (newEducation: any) => void;
+    }[];
+  onAdd: () => void;
 };
 
 export default function EducationalExperienceList({ educationalExperience, onAdd }: Props) {
@@ -18,10 +16,11 @@ export default function EducationalExperienceList({ educationalExperience, onAdd
     <>
         <div>
             <h2>Educational Experience</h2>
-            <button>Add Experience</button>
+            <button onClick={() => onAdd()}>Add Experience</button>
         </div>
-        <EducationalExperienceCard />
-        <ButtonSection />
+        {educationalExperience.map((education, index) => (
+            <EducationalExperienceCard key={index} education={education} />
+        ))}
     </>
     );
 }
