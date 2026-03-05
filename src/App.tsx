@@ -34,6 +34,35 @@ export default function App() {
         }));
     };
 
+    const handleEducationChange = (index: number, field: string, value: string) => {
+        setFormData(prev => {
+            const updated = [...prev.educationalExperience];
+            updated[index] = {
+                ...updated[index],
+                [field]:value
+            };
+            return {
+                ...prev,
+                educationalExperience: updated
+            };
+        });
+    }
+    
+    const handlePracticalExperienceChange = (index: number, field: string, value: string) => {
+        setFormData(prev => {
+            const updated = [...prev.practicalExperience];
+            updated[index] = {
+                ...updated[index],
+                [field]:value
+            };
+            return {
+                ...prev,
+                practicalExperience: updated
+            };
+        });
+    }
+    
+
     const addEducation = () => {
         setFormData(prev => ({
             ...prev,
@@ -67,7 +96,8 @@ export default function App() {
 
   return (
     <>
-      <ApplicationForm formData={formData} addEducation={addEducation} addPracticalExperience={addPracticalExperience} onInputChange={handleInputChange} />
+      <ApplicationForm formData={formData} addEducation={addEducation}  addPracticalExperience={addPracticalExperience} 
+      onEducationChange={handleEducationChange} onPracticalExperienceChange={handlePracticalExperienceChange} onInputChange={handleInputChange} />
     </>
   )
 }

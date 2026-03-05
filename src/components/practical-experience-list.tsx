@@ -1,7 +1,7 @@
 import PracticalExperienceCard from "./practical-experience-card";
 
 type Props = {
-  practicalExperience: 
+    practicalExperience: 
     {
         company: string;
         position: string;
@@ -9,10 +9,11 @@ type Props = {
         startDate: string;
         endDate: string;
     }[];
-  onAdd: () => void;
+    onAdd: () => void;
+    onChange: (index: number, field: string, value: string) => void;
 };
 
-export default function PracticalExperienceList({ practicalExperience, onAdd }: Props) {
+export default function PracticalExperienceList({ practicalExperience, onAdd, onChange }: Props) {
             return (
     <>
         <div>
@@ -20,7 +21,7 @@ export default function PracticalExperienceList({ practicalExperience, onAdd }: 
             <button onClick={() => onAdd()}>Add Experience</button>
         </div>
         {practicalExperience.map((experience, index) => (
-            <PracticalExperienceCard key={index} experience={experience} index={index}/>
+            <PracticalExperienceCard key={index} experience={experience} index={index} onChange={onChange} />
         ))}
     </>
     );

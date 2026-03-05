@@ -1,7 +1,6 @@
 import GeneralInfo from "../components/general-info";
 import EducationalExperienceList from "../components/educational-experience-list";
 import PracticalExperienceList from "../components/practical-experience-list";
-import { useState } from "react";
 
 type Props = {
     formData:{
@@ -28,18 +27,19 @@ type Props = {
     addEducation: () => void;
     addPracticalExperience: () => void;
     onInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-
-
+    onEducationChange: (index: number, field: string, value: string) => void;
+    onPracticalExperienceChange: (index: number, field: string, value: string) => void;
 };
 
-export default function ApplicationForm({ formData, addEducation, addPracticalExperience, onInputChange }: Props) {
+export default function ApplicationForm({ formData, addEducation, addPracticalExperience,
+    onInputChange, onEducationChange, onPracticalExperienceChange }: Props) {
 
     return (
     <>
         <h1>Application Form</h1>
         <GeneralInfo name={formData.name} email={formData.email} phone={formData.phone} onChange={onInputChange} />
-        <EducationalExperienceList educationalExperience={formData.educationalExperience} onAdd={addEducation}/>
-        <PracticalExperienceList practicalExperience={formData.practicalExperience} onAdd={addPracticalExperience}/>
+        <EducationalExperienceList educationalExperience={formData.educationalExperience} onAdd={addEducation} onChange={onEducationChange} />
+        <PracticalExperienceList practicalExperience={formData.practicalExperience} onAdd={addPracticalExperience} onChange={onPracticalExperienceChange} />
         <button>Submit</button>
     </>
 );
