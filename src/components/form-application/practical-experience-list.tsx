@@ -18,7 +18,7 @@ export default function PracticalExperienceList({ practicalExperience, onAdd, on
     <>
         <div>
             <h2>Practical Experience</h2>
-            <button onClick={() => onAdd()}>Add Experience</button>
+            <button type="button" onClick={() => onAdd()}>Add Experience</button>
         </div>
         {practicalExperience.map((experience, index) => (
             <PracticalExperienceCard key={index} experience={experience} index={index} onChange={onChange} />

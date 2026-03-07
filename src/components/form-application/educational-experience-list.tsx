@@ -17,7 +17,7 @@ export default function EducationalExperienceList({ educationalExperience, onAdd
     <>
         <div>
             <h2>Educational Experience</h2>
-            <button onClick={() => onAdd()}>Add Experience</button>
+            <button type="button" onClick={() => onAdd()}>Add Experience</button>
         </div>
         {educationalExperience.map((education, index) => (
             <EducationalExperienceCard key={index} education={education} onChange={onChange} index={index} />

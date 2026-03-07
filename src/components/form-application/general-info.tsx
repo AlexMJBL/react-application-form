@@ -1,10 +1,10 @@
-import ButtonSection from "./button-section";
 type Props = {
     name: string;
     email: string;
     phone: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
+
 export default function GeneralInfo({ name, email, phone, onChange }: Props) {
     return (
     <>
@@ -21,7 +21,6 @@ export default function GeneralInfo({ name, email, phone, onChange }: Props) {
             <label htmlFor="phone">Phone Number:</label>
             <input id="phone" type="text" placeholder="(123) 456-7890" value={phone} onChange={onChange} name="phone" />
         </div>
-        <ButtonSection />
     </>
 );
 }
