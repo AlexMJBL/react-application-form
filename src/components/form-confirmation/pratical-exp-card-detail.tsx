@@ -8,16 +8,30 @@ type Props = {
     };
 };
 
-export default function PracticalExperienceCardDetail({ experience}: Props) {
+export default function PracticalExperienceCardDetail({ experience }: Props) {
     return (
-    <>
-        <div>
-            <label htmlFor="company">Company Name : {experience.company}</label>
-            <label htmlFor="position">Position : {experience.position}</label>
-            <label htmlFor="description">Description : {experience.description}</label>
-            <label htmlFor="start-date">Start Date : {experience.startDate}</label>
-            <label htmlFor="end-date">End Date : {experience.endDate}</label>
+        <div className="border-2 border-[#654321] rounded-xl p-4 bg-white shadow-sm">
+
+            <p>
+                <span className="font-semibold">Company:</span> {experience.company}
+            </p>
+
+            <p>
+                <span className="font-semibold">Position:</span> {experience.position}
+            </p>
+
+            <p>
+                <span className="font-semibold">Description:</span> {experience.description}
+            </p>
+
+            <p>
+                <span className="font-semibold">Start Date:</span> {experience.startDate}
+            </p>
+
+            <p>
+                <span className="font-semibold">End Date:</span> {experience.endDate}
+            </p>
+
         </div>
-    </>
     );
 }

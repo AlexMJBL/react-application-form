@@ -47,7 +47,7 @@ export default function EducationalExperienceCard({ education, onChange, index }
                 </div>
 
                 <div className="flex flex-col">
-                    <label className="text-[#654321] font-medium">Graduation Year</label>
+                    <label className="text-[#654321] font-medium">Graduation Date</label>
                     <input
                         type="date"
                         value={education.graduationYear}
