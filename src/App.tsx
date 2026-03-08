@@ -1,7 +1,6 @@
 import { useState } from "react";
 import ApplicationForm from "./pages/application-form";
 import Confirmation from "./pages/confirmation-page";
-import PracticalExperienceCard from "./components/form-application/practical-experience-card";
 
 export default function App() {
 
