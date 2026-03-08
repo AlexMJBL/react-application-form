@@ -12,23 +12,52 @@ type Props = {
 
 export default function EducationalExperienceCard({ education, onChange, index }: Props) {
     return (
-    <>
-        <div>
-            <label htmlFor="school">School</label>
-            <input type="text" id="school" name="school" value={education.school} onChange={(e) => onChange(index, "school", e.target.value)} />
+        <div className="border-2 border-[#654321] rounded-xl p-5 bg-[#f5efe8] shadow-sm">
+
+            <div className="flex flex-col gap-4">
+
+                <div className="flex flex-col">
+                    <label className="text-[#654321] font-medium">School</label>
+                    <input
+                        type="text"
+                        value={education.school}
+                        onChange={(e) => onChange(index, "school", e.target.value)}
+                        className="border border-[#654321] rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#654321]"
+                    />
+                </div>
+
+                <div className="flex flex-col">
+                    <label className="text-[#654321] font-medium">Degree</label>
+                    <input
+                        type="text"
+                        value={education.degree}
+                        onChange={(e) => onChange(index, "degree", e.target.value)}
+                        className="border border-[#654321] rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#654321]"
+                    />
+                </div>
+
+                <div className="flex flex-col">
+                    <label className="text-[#654321] font-medium">Field of Study</label>
+                    <input
+                        type="text"
+                        value={education.fieldOfStudy}
+                        onChange={(e) => onChange(index, "fieldOfStudy", e.target.value)}
+                        className="border border-[#654321] rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#654321]"
+                    />
+                </div>
+
+                <div className="flex flex-col">
+                    <label className="text-[#654321] font-medium">Graduation Year</label>
+                    <input
+                        type="date"
+                        value={education.graduationYear}
+                        onChange={(e) => onChange(index, "graduationYear", e.target.value)}
+                        className="border border-[#654321] rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#654321]"
+                    />
+                </div>
+
+            </div>
+
         </div>
-        <div>
-            <label htmlFor="degree">Degree</label>
-            <input type="text" id="degree" name="degree" value={education.degree} onChange={(e) => onChange(index, "degree", e.target.value)} />
-        </div>
-        <div>
-            <label htmlFor="field-of-study">Field of Study</label>
-            <input type="text" id="field-of-study" name="field-of-study" value={education.fieldOfStudy} onChange={(e) => onChange(index, "fieldOfStudy", e.target.value)} />
-        </div>
-        <div>
-            <label htmlFor="graduation-year">Graduation Year</label>
-            <input type="date" id="graduation-year" name="graduation-year" value={education.graduationYear} onChange={(e) => onChange(index, "graduationYear", e.target.value)} />
-        </div>
-    </>
     );
 }

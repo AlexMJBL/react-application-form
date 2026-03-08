@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ApplicationForm from "./pages/application-form";
 import Confirmation from "./pages/confirmation-page";
+import PracticalExperienceCard from "./components/form-application/practical-experience-card";
 
 export default function App() {
 
@@ -31,6 +32,7 @@ export default function App() {
     const handleSubmit = () => {
         if(validateForm()){
             setPage("confirmation");
+            return;
         }
 
         alert("Please fill all fields.");
@@ -115,6 +117,16 @@ export default function App() {
         }));
     };
 
+    const removeEducation = () =>{
+        if(formData.educationalExperience.length <= 1){
+            return;
+        }
+        setFormData(prev => ({
+            ...prev, 
+            educationalExperience: prev.educationalExperience.slice(0,-1)
+        }));
+    };
+
     const addPracticalExperience = () => {
         setFormData(prev => ({
             ...prev,
@@ -131,9 +143,19 @@ export default function App() {
         }));
     };
 
+    const removePracticalExperience = () => {
+        if(formData.practicalExperience.length <= 1){
+            return;
+        }
+        setFormData(prev => ({
+            ...prev,
+            practicalExperience: prev.practicalExperience.slice(0,-1)
+        }));
+    }
+
     return (
-        <div className="bg-[#f2e8dc]">{page === "form" ? (
-            <ApplicationForm formData={formData} addEducation={addEducation} addPracticalExperience={addPracticalExperience} onSubmit={handleSubmit}
+        <div className="bg-[#fef4ef]">{page === "form" ? (
+            <ApplicationForm formData={formData} addEducation={addEducation} removeEducation={removeEducation} addPracticalExperience={addPracticalExperience} removePracticalExperience={removePracticalExperience} onSubmit={handleSubmit}
                 onEducationChange={handleEducationChange} onPracticalExperienceChange={handlePracticalExperienceChange} onInputChange={handleInputChange} />
         ) : (
             <Confirmation formData={formData} onEdit={handleEdit} />
